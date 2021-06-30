@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue源码学习</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{person.name}}-{{person.age}}</h1>
+        <h3>{{person.fav}}</h3>
+
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <h3>{{msg}}</h3>
+        <div v-text='person.fav'></div>
+        <div v-html='htmlStr'></div>
+        <input type='text' v-model='b'>
+        <div>{{b}}</div>
+        <input type='text' v-model='c'>
+        <div>{{c}}</div>
+        <input type='text' v-model='hello'>
+        <div v-text="hello"></div>
+        <button @click="testclick">点击时间</button>
+
+    </div>
+    <script src="./Observer.js"></script>
+    <script src="./mVue.js"></script>
+    <script>
+        var com = new mVue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '小马哥',
+                    age: '29',
+                    fav: '姑娘'
+                },
+                htmlStr: '',
+                msg: '学习vue 的源码',
+                a: 'a是a',
+                b: 'b是b',
+                c: 'c是ok'
+            },
+            methods: {
+                testclick() {
+                    this.msg = 'sadassd'
+                }
+            },
+            computed: {
+                hello() {
+                    console.log('108')
+                    return this.b + this.c
+                }
+            }
+        });
+        console.log(com)
+    </script>
+</body>
+
+</html>
