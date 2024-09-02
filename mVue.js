@@ -29,7 +29,6 @@ const conpileUtil = {
                     console.log('做爱')
                 }
                 new Watcher(vm, args[1], (updateValue) => {
-                    //  console.log(updateValue, "updateValue", expr, this.getContentText(expr, vm))
                     this.undater.testUpadter(node, this.getContentText(expr, vm))
                 })
                 return this.getValue(args[1], vm)
@@ -183,9 +182,9 @@ function defineComputed(vm, key, userDef) {
                     Dep.target = null
                 }
 
-                // if (Dep.target) {
-                //     watcher.depend()
-                // }
+                if (Dep.target) {
+                    watcher.depend()
+                }
                 return watcher.value
             }
         }
